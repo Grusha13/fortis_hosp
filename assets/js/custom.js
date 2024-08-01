@@ -137,8 +137,54 @@
       ]
     });
 
+    var telInput = $(".form_phone"),
+    errorMsg = $(".help-block"),
+    validMsg = $("#valid-msg");
 
+  telInput.intlTelInput({
+    allowExtensions: true,
+    formatOnDisplay: true,
+    autoFormat: true,
+    autoHideDialCode: true,
+    autoPlaceholder: "aggressive",
+    defaultCountry: "auto",
+    ipinfoToken: "your-ipinfo-token", // Use your actual IPinfo token here
+    nationalMode: false,
+    numberType: "MOBILE",
+    preferredCountries: ['sa', 'ae', 'qa', 'om', 'bh', 'kw', 'ma'],
+    preventInvalidNumbers: true,
+    separateDialCode: true,
+    geoIpLookup: function(callback) {
+      $.get("https://ipinfo.io?token=your-ipinfo-token", function() {}, "jsonp").always(function(resp) {
+        var countryCode = (resp && resp.country) ? resp.country : "";
+        callback(countryCode);
+      });
+    },
+    utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/11.0.9/js/utils.js"
   });
+
+function reset() {
+  telInput.removeClass("error");
+  errorMsg.addClass("hide");
+  validMsg.addClass("hide");
+}
+
+telInput.blur(function() {
+  reset();
+  if ($.trim(telInput.val())) {
+    if (telInput.intlTelInput("isValidNumber")) {
+      validMsg.removeClass("hide");
+    } else {
+      telInput.addClass("error");
+      errorMsg.removeClass("hide");
+    }
+  }
+});
+
+telInput.on("keyup change", reset);
+});
+
+  
 
   document.addEventListener('DOMContentLoaded', function() {
   const sections = document.querySelectorAll('.hidden-animation');
@@ -158,10 +204,59 @@
   window.addEventListener('scroll', checkVisibility);
   checkVisibility();
 
-  var input = document.querySelector("#telephone");
-  window.intlTelInput(input,({
+  $('.form_phone').on('input', function() {
+    this.value = this.value.replace(/\D/g, '');
+  });
 
-  }));
+  $('#contact-form').on('submit', function(event) {
+    var isValid = true;
+
+    // Validate Name
+    if ($('#form_name').val().trim() === '') {
+      isValid = false;
+      $('#form_name').next('.help-block').text('Name is required.');
+    } else {
+      $('#form_name').next('.help-block').text('');
+    }
+
+    // Validate Phone
+    var phonePattern = /^[0-9]+$/;
+    if (!phonePattern.test($('.form_phone').val())) {
+      isValid = false;
+      $('.form_phone').next('.help-block').text('Valid phone number is required.');
+    } else {
+      $('.form_phone').next('.help-block').text('');
+    }
+
+    // Validate Country
+    if ($('#form_country').val().trim() === '') {
+      isValid = false;
+      $('#form_country').next('.help-block').text('Country is required.');
+    } else {
+      $('#form_country').next('.help-block').text('');
+    }
+
+    // Validate Email
+    if (!validator.isEmail($('#form_email').val())) {
+      isValid = false;
+      $('#form_email').next('.help-block').text('Valid email is required.');
+    } else {
+      $('#form_email').next('.help-block').text('');
+    }
+
+     // Validate Treatment
+    if ($('#form_treatment').val().trim() === '') {
+      isValid = false;
+      $('#form_treatment').next('.help-block').text('Please selected the treatment.');
+    } else {
+      $('#form_treatement').next('.help-block').text('');
+    }
+
+
+    if (!isValid) {
+      event.preventDefault();
+    }
+  });
 
   
   });

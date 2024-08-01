@@ -28,6 +28,31 @@ body{
 }
 
 
+.intl-tel-input{
+    width: 100%;
+
+    .country-list{
+        transform: none;
+        top: 100%;
+        width: 325px;
+        left: 0;
+        background-color: $white;
+        
+        li{
+            .country-name{
+                color: $black;
+            }
+        }
+    }
+
+    &.separate-dial-code{
+        .selected-dial-code{
+            padding-left: 10px;
+        }
+    }
+}
+
+
 .scroll-top{
     display: none; 
     position: fixed;
@@ -495,7 +520,10 @@ header{
         }
     }
 
-
+    .image-wrapper{
+        border-radius: 20px;
+        overflow: hidden;
+    }
 
 }
 /* Types of Cancer End */ 
