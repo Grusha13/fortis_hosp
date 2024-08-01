@@ -1,0 +1,1048 @@
+@import './variable';
+
+body{
+    font-family: $font;
+    position: relative;
+}
+
+.wa-wrapper{
+    position: fixed;
+    bottom: 80px;
+    right: 20px;
+    border: none;
+    cursor: pointer;
+    z-index: 99;
+    transition: 0.2s all ease;
+
+    a{
+        background-color: #25D366;
+        padding: 14px 13px 16px;
+        border-radius: 100px;
+
+        i{
+            color: $white;
+            font-size: 30px;
+            vertical-align: middle;
+        }
+    }
+}
+
+
+.scroll-top{
+    display: none; 
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    border: none;
+    cursor: pointer;
+    z-index: 99;
+    transition: 0.2s all ease;
+
+    a{
+        background-color: $white;
+        border: 1px solid $primary-color;
+        padding: 12px 17px;
+        border-radius: 100px;
+
+        i{
+            color: $primary-color;
+            font-size: 20px;
+        }
+    }
+}
+
+header{
+    z-index: 99;
+    width: 100%;
+    background-color: $white;
+    font-family: $font;
+    box-shadow: $header-shadow;
+
+    .navbar-nav{
+        .nav-item{
+            margin: 0 10px;
+
+            .nav-link{
+                position: relative;
+                color: $black;
+                transition: .4s;
+                &.active{
+                    color: $primary-color;
+                    &::after{
+                        content: '';
+                        left: 0;
+                        height: 2px;
+                        width: 100%;
+                        background-color: $primary-color;
+                        bottom: 0;
+                        transform: scale(1);
+                    }
+                }
+
+                &:after{
+                    content: '';
+                    display: block;
+                    position: absolute;
+                    transition: .4s;
+                    background-color: transparent;
+                    transform: scale(0);
+                    transition-timing-function: cubic-bezier(.58,.3,.005,1);
+                }
+            }
+        }
+    }
+
+    .wa-btn{
+        background-color: $primary-color;
+        border-radius: 30px;
+        color: $white;
+        padding: 10px 15px;
+        font-size: 16px;
+        font-weight: $font-medium;
+        font-family: $font;
+        transition: 0.3s all ease;
+
+        &:hover{
+            color: $white;
+            background-color: $secondary-color;
+        }
+    }
+
+    @media screen and (max-width: 990px) {
+        .contact-no{
+            position: absolute;
+            top: 8px;
+            right: 100px;
+        }
+
+        .navbar-collapse{
+            background-color: $white;
+            position: absolute;
+            top: 100%;
+            width: 100%;
+            left: 0;
+            text-align: center;
+        }
+
+        .navbar-light{
+            .navbar-toggler{
+                border: 0 !important;
+            }
+        }
+        .navbar-toggler-icon{
+            background-image: none !important;
+
+            i{
+                color: $primary-color;
+                font-size: 30px;
+            }
+
+            .fa-bars{
+                transition: inherit;
+            }
+
+            .fa-xmark{
+                display: none;
+                transition: inherit;
+            }
+        }
+    }
+
+    @media screen and (max-width: 520px) {
+        background-color: $primary-color;
+        .contact-no{
+            position: absolute;
+            top: 0px;
+            right: 100px;
+        }
+
+        .navbar-toggler-icon{
+            i{
+                color: $white;
+            }
+        }
+
+        .navbar-collapse{
+            background-color: $white;
+            color: $black;
+            position: absolute;
+            top: 100%;
+            width: 100%;
+            left: 0;
+            text-align: center;
+
+            .nav-link{
+                position: relative;
+                color: $black;
+                &.active{
+                    &::after{
+                        display: none;
+                    }
+                }
+
+                &:after{
+                  display: none;
+                }
+            }
+        }
+    }
+
+    @media screen and (max-width: 520px) {
+        .contact-no{
+           display: none !important;
+        }
+    }
+}
+/* Banner Start */
+.banner{
+    padding: 140px 0 40px;
+    background-image: url(../images/banner_bg.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+
+    &::before{
+        content: "";
+        background: linear-gradient(90deg, $primary-color 16%, #0097b2 100%);
+        position: absolute;
+        top: 0;
+        height: 100%;
+        width: 100%;
+        opacity: 0.82;
+    }
+
+    .title{
+        color: #fff;
+
+        h5{
+            font-size: 68px;
+            font-weight: $font-bold;
+            margin-bottom: 15px;
+            line-height: 1.2;
+            letter-spacing: 0.5px;
+            font-family: $font;
+        }
+
+        p{
+            font-family: $font;
+            font-size: 20px;
+            line-height: 2;
+        }
+    }
+
+    .form-wrapper{
+        border-radius: 15px;
+        background-color: $primary-color;
+        box-shadow: 0px 0px 3px 0px rgba(0,0,0,0.5);
+        padding: 20px;
+        text-align: center;
+
+        h6{
+            font-size: 24px;
+            font-weight: $font-regular;
+            color: $white;
+
+            span{
+                font-weight: $font-bold;
+                opacity: 1;
+                animation: zoomOut .8s;
+            }
+        }
+
+        .form-control{
+            padding-left: 40px;
+            position: relative;
+            margin: 10px 0;
+        }
+    
+        
+        i{
+            position: absolute;
+            top: 22px;
+            left: 26px;
+            color: $primary-color;
+        }
+    
+        .wa-btn{
+            transition: 0.5s all ease;
+            background-color: $white;
+            border-radius: 50px;
+            border: 0;
+            color: $primary-color;
+            padding: 10px 20px;
+            transition: 0.3s all ease;
+
+            &:hover{
+                background-color: $secondary-color;
+                color: $white;
+            }
+        }
+    }
+
+   @media screen and (max-width: 520px){
+        .title{
+            h5{
+                font-size: 40px;
+            }
+        }
+   }
+}
+/* Banner End */
+/* About Start */
+.about{
+    padding: 80px 0 40px;
+    font-family: $font;
+
+    h1{
+        font-weight: $font-black;
+        color: $primary-color;
+        margin-bottom: 20px;
+        margin-top: 10px;
+    }
+    p{
+        color: $black;
+    }
+
+    .image-wrapper{
+        text-align: center;
+        overflow: hidden;
+        height: 100%;
+
+        img{
+            height: 100%;
+            width: 100%;
+            border-radius: 15px;
+            transition-duration: 2s;
+            animation: 2s ease-out 0s 1 slideInRight;
+
+            &:hover{
+                transform: translateY(-8px);
+            }
+        }
+    }
+}
+/* About End */ 
+/* Department Start */
+.department{ 
+    padding: 60px 0;
+    background-color: $section-bg;
+    overflow: hidden;
+    .left-title{
+        @include left-title;
+    }
+
+    .right-title{
+       @include right-title;
+    }
+
+    .card{
+        height: 440px;
+        display: flex;
+        flex-direction: column;
+        margin: 15px 0;
+        border: 1px solid transparent;
+        box-shadow: 0 0 20px 3px rgba(0, 0, 0, 0.05);
+        background-color: $white;
+        position: relative;
+        transition: all ease 0.5s;
+        z-index: 1;
+    
+
+        .card-wrapper{
+            &::before{
+                content: "";
+                width: 2px;
+                height: 0;
+                position: absolute;
+                transition: all 0.2s linear;
+                background: $secondary-color;
+                transition-delay: 0s;
+                left: 0;
+                top: 0;
+                border-radius: 4px;
+                z-index: -1;
+            }
+
+            &::after{
+                content: "";
+                width: 2px;
+                height: 0;
+                position: absolute;
+                transition-delay: 0.4s;
+                left: auto;
+                right: 0;
+                top: auto;
+                bottom: 0;
+                background: $secondary-color;
+                transition-delay: 0s;
+                border-radius: 4px;
+                z-index: -1;
+            }
+        }
+
+        .image-wrapper{
+            width: 70px;
+            height: 70px;
+            margin-bottom: 20px; 
+        }
+
+        .card-body{
+            height: 240px;
+            h6{
+                color: $black;
+                font-size: 25px;
+                font-weight: $font-bold;
+            }
+            p{
+                color: $text-color;
+                margin: 20px 0;
+            }
+        }
+
+        a{
+            background-color: $primary-color;
+            color: $white;
+            padding: 10px 20px;
+            border-radius: 4px;
+            transition: all .3s;
+            text-align: center;
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: $font-medium;
+            font-family: $font-2;
+
+            i{
+                font-size: 14px;
+            }
+
+            &:hover{
+                background-color: $secondary-color;
+            }
+        }
+
+        &::before{
+            content: "";
+            width: 0;
+            height: 2px;
+            position: absolute;
+            transition: all 0.2s linear;
+            background: $secondary-color;
+            right: 0;
+            top: 0;
+            transition-delay: 0.2s;
+            border-radius: 4px;
+            z-index: -1;
+        }
+
+        &::after{
+            content: "";
+            width: 0;
+            height: 2px;
+            position: absolute;
+            transition: all 0.2s linear;
+            background: $secondary-color;
+            right: auto;
+            left: 0;
+            top: auto;
+            bottom: 0;
+            transition-delay: 0.2s;
+            border-radius: 4px;
+            z-index: -1;
+        }
+
+        &:hover{
+            &::before{
+                width: 100%;
+                transition-delay: 0.4s;
+            }
+            &::after{
+                width: 100%;
+                transition-delay: 0s;
+            }
+
+            .card-wrapper{
+                &::before {
+                    height: 100%;
+                    transition-delay: 0.6s;
+                }
+
+                &::after{
+                    height: 100%;
+                    transition-delay: 0.2s;
+                }
+            }
+        }
+    }
+
+    .up-animation{
+        transition-duration: 2s;
+        animation: 2s ease-out 0s 1 slideInUp;
+    }
+}
+/* Department Start */
+/* Types of Cancer Start */ 
+.type-of-cancer{
+    padding: 60px 0;
+    .left-title{
+        @include left-title;
+        margin-top: 40px;
+
+        h2{
+            font-size: 32px;
+            line-height: 1.3;
+            margin: 20px 0;
+        }
+    }
+
+
+
+}
+/* Types of Cancer End */ 
+/* Appointment Start */
+.appointment-form{
+    padding: 60px 0;
+
+    .content-wrapper{
+        background-color: $primary-color;
+        color: $white;
+        height: 100%;
+        border-radius: 20px;
+        padding: 50px 40px;
+
+        .title{
+            padding-bottom: 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+            h6{
+                font-family: $font-2;
+                font-size: 20px;
+                text-transform: uppercase;
+                margin-bottom: 20px;
+            }
+
+            h4{
+                font-size: 44px;
+                font-family: $font;
+                font-weight: $font-bold;
+            }
+        }
+
+        .number{
+            padding-top: 30px;
+
+            h6{
+                font-size: 18px;
+                font-style: italic;
+                margin-bottom: 20px;
+            }
+
+            h4{
+                font-size: 48px;
+                font-weight: $font-bold;
+            }
+        }
+    }
+
+    .form-control{
+        padding-left: 40px;
+        position: relative;
+        margin: 10px 0;
+    }
+
+    
+    i{
+        position: absolute;
+        top: 22px;
+        left: 26px;
+        color: $primary-color;
+    }
+
+    .wa-btn{
+        transition: 0.5s all ease;
+        background-color: $primary-color;
+        border-radius: 50px;
+        border: 0;
+        color: $white;
+        padding: 10px 20px;
+    }
+
+    @media screen and (max-width: 520px) {
+        .content-wrapper {
+            .number{
+                h4 {
+                    font-size: 32px;
+                }
+            }
+        }
+    }
+}
+/* Appointment End */
+/* Doctors Start */
+.doctors{
+    padding: 60px 0 80px;
+    position: relative;
+    .left-title{
+        @include left-title;
+    }
+
+    .right-title{
+       @include right-title;
+    }
+
+  .card{
+    @include border-green;
+    overflow: hidden;
+    transition: 0.3s all ease;
+    opacity: 1;
+    margin: 0 10px;
+
+    .image-wrapper{
+        img{
+            margin: 20px auto 0;
+        }
+    }
+
+    .content{
+        background-color: $content-bg;
+        height: 160px;
+        padding: 20px;
+
+        h6{
+            font-size: 22px;
+            margin-bottom: 5px;
+            color: $black;
+            font-weight: $font-bold;
+        }
+
+        p{
+            color: $text-color;
+            font-size: 16px;
+            margin-bottom: 5px;
+        }
+
+        span{
+            color: $primary-color;
+            font-weight: $font-bold;
+        }
+    }
+
+    &:hover{
+        box-shadow: $box-shadow-2;
+        transition: 0.3s all ease;
+    }
+  }
+
+  .slick-dots{
+    padding: 0;
+    display: flex !important;
+    position: absolute;
+    width: 100%;
+    top: 105%;
+    justify-content: center;
+
+    li{
+        list-style: none;
+        margin: 0 10px;
+
+        button{
+            font-size: 0;
+            border-radius: 100%;
+            padding: 5px;
+            border: 0;
+            background-color: rgba(12, 168, 84, 0.2);
+        }
+    }
+
+    .slick-active{
+        button{
+            background-color: $primary-color;
+        }
+    }
+  }
+
+  @media screen and (max-width: 990px) {
+    .card{
+        .content{
+            height: 200px;
+        }
+      }
+  }
+
+  @media screen and (max-width: 420px) {
+    .card{
+        .content{
+            height: 200px;
+        }
+      }
+    }
+}
+/* Doctors End */
+/*Statisctics Start */
+.stats{
+    padding: 60px 0;
+    background-image: url(../images/stats_bg.webp);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    position: relative;
+
+    &::before{
+        content: "";
+        background-color: #FFFFFF;
+        position: absolute;
+        top: 0;
+        height: 100%;
+        width: 100%;
+        opacity: 0.3;
+    }
+
+    .left-title{
+        @include left-title;
+    }
+
+    .right-title{
+       @include right-title;
+    }
+    .card{
+        @include border-green;
+        background-color: $primary-color;
+        padding: 10px;
+        text-align: center;
+        height: 250px;
+        margin: 10px 0;
+
+        .image-wrapper{
+            background-color: $white;
+            border-radius: 100%;
+            padding: 40px 0px;
+            border: 1px solid $black;
+            margin-bottom: 10px;
+        }
+
+        .card-body{
+            padding: 0;
+
+            h6{
+                color: $white;
+                font-weight: $font-bold;
+            }
+
+            p{
+                font-size: 15px;
+                color: $white;
+                margin-bottom: 0;
+            }
+        }
+    }
+}
+/*Statisctics End */
+/* Why Fortis Start */
+.why-fortis{
+    padding: 60px 0;
+    overflow: hidden;
+    .left-title{
+        @include left-title;
+        margin-top: 40px;
+
+        h2{
+            font-size: 50px;
+            line-height: 1.3;
+        }
+    }
+
+    .right-title{
+        position: relative;
+        display: flex;
+        align-items: center;
+        padding-bottom: 40px;
+
+        p{
+            margin-bottom: 0;
+            color: $black;
+        }
+    
+    }
+
+    .content-wrapper{
+        @include border-green;
+        height: 250px;
+        display: flex;
+        align-items: center;
+
+        .image-wrapper{
+            width: 75px;
+            margin-right: 5px;
+        }
+    }
+
+    @media screen and (max-width: 990px) {
+        .content-wrapper{
+           display: block;
+           height: 350px;
+        }
+    }
+
+    @media screen and (max-width: 768px) {
+        .row{
+            flex-direction: column-reverse;
+        }
+        content-wrapper{
+            height: 340px;
+         }
+    }
+
+    @media screen and (max-width: 520px) {
+        .content-wrapper{
+            height: auto;
+         }
+    }
+}
+/* Why Fortis End */
+/* Hospital Start */
+.hospitals{
+    padding: 60px 0;
+    .left-title{
+        @include left-title;
+    }
+
+    .right-title{
+       @include right-title;
+    }
+
+    .card{
+        @include border-green;
+        overflow: hidden;
+        margin: 15px 0;
+        transition: 0.3s all ease;
+        opacity: 1;
+        animation: zoomIn 1s;
+    
+        .content{
+            background-color: $content-bg;
+            height: 100px;
+            display: flex;
+            align-items: center;
+    
+            h5{
+                font-size: 22px;
+                font-weight: $font-bold;
+                color: $black;
+                line-height: 30px;
+                margin-bottom: 0;
+            }
+        }
+    
+        &:hover{
+            box-shadow: $box-shadow-2;
+            transition: 0.3s all ease;
+        }
+      
+    }
+
+    .slick-dots{
+        padding: 0;
+        display: flex !important;
+        position: absolute;
+        width: 100%;
+        top: 105%;
+        justify-content: center;
+    
+        li{
+            list-style: none;
+            margin: 0 10px;
+    
+            button{
+                font-size: 0;
+                border-radius: 100%;
+                padding: 5px;
+                border: 0;
+                background-color: rgba(12, 168, 84, 0.2);
+            }
+        }
+    
+        .slick-active{
+            button{
+                background-color: $primary-color;
+            }
+        }
+      }
+}
+/* Hospital End */
+/* FAQ Start */
+.faq{
+    padding: 30px 0;
+    .title{
+        @include left-title;
+    }
+
+    .ui-accordion{
+        transition: 0.3s all ease;
+        padding-bottom: 10px;
+        border-bottom: 1px solid #ccc;
+        a{
+            font-weight: $font-bold;
+            color: $title-color;
+            text-decoration: none;
+        }
+        .ui-state-active{
+            a{
+            color: $black;
+            }
+            .fa-chevron-down{
+                transition: 0.3s all ease;
+                &::before{
+                    content: '\F062';
+                }
+            }
+        }
+
+        .content-wrapper{
+            p{
+                color: #353535;
+                font-size: 15px;
+                font-weight: 400;
+            }
+        }
+        .border-top{
+            border-top: 1px solid #ccc;
+        }
+    }
+}
+/* FAQ End */
+/* Appointment Start */
+.appointment{
+    padding: 60px 0;
+    background-image: url(../images/stats_bg.webp);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    position: relative;
+
+    &::before{
+        content: "";
+        background-color: $black;
+        position: absolute;
+        top: 0;
+        height: 100%;
+        width: 100%;
+        opacity: 0.6;
+    }
+
+    .title{
+        color: $white;
+        font-family: $font-2;
+        margin-bottom: 20px;
+
+        h5{
+            font-size: 30px;
+            font-weight: 600;
+        }
+
+        h2{
+            font-size: 24px;
+            font-weight: $font-regular;
+
+            span{
+                font-weight: $font-bold;
+            }
+        }
+    }
+
+    .form-control{
+        padding-left: 40px;
+        position: relative;
+        margin: 10px 0;
+    }
+
+    
+    i{
+        position: absolute;
+        top: 22px;
+        left: 26px;
+        color: $primary-color;
+    }
+
+ 
+    .wa-btn{
+        background-color: $primary-color;
+        position: relative;
+        border: 0;
+        border-radius: 50px;
+        padding: 8px 20px;
+        color: $white;
+        display: block;
+        margin: auto;
+        font-family: $font-2;
+        font-size: 18px;
+        font-weight: $font-medium;
+        transition: 0.5s all ease;
+
+        &:hover{
+            background-color: $secondary-color;
+        }
+    }
+        
+    
+}
+/* Appointment End */
+/* Footer Start */
+footer{
+    padding: 60px 0 20px;
+    background-color: $primary-color;
+    color: $white;
+    font-family: $font;
+
+    .image-wrapper{
+        width: 200px;
+    }
+
+    .title{
+        text-align: center;
+        margin-bottom: 30px;
+        h6{
+            font-size: 30px;
+            text-transform: uppercase;
+        }
+
+        h4{
+            font-size: 40px;
+            font-weight: $font-bold;
+        }
+
+        h2{
+            font-size: 50px;
+            font-weight: $font-bold;
+        }
+    }
+
+    .footer-wrapper{
+        .footer-list{
+            padding: 0;
+
+            .footer-link{
+                list-style: none;
+                margin: 10px 0;
+
+                a{
+                    text-decoration: none;
+                    color: $white;
+                }
+            }
+        }
+    }
+
+    .copyright{
+        border-top: 1px solid $white;
+    }
+
+    @media screen and (max-width: 520px) {
+        .title {
+            h2 {
+                font-size: 40px;
+            }
+        }
+    }
+}
+/* Footer End */
